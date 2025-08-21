@@ -1,0 +1,55 @@
+<div class="container mt-5">
+  <div class="card mx-auto shadow-lg border-0 rounded-4" style="max-width: 420px;">
+    <div class="card-header text-center bg-primary text-white rounded-top-4">
+      <h4 class="mb-0"><i class="bi bi-shield-lock-fill me-2"></i>Login with OTP</h4>
+    </div>
+
+    <div class="card-body p-4">
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        
+        <!-- Email Input -->
+        <div class="mb-3">
+          <label for="email" class="form-label fw-semibold">Email Address</label>
+          <input 
+            type="email" 
+            class="form-control form-control-lg" 
+            id="email" 
+            placeholder="Enter your email"
+            formControlName="email">
+        </div>
+
+        <!-- OTP Input -->
+        <div *ngIf="isOtpSent" class="mb-3">
+          <label for="otp" class="form-label fw-semibold">Enter OTP</label>
+          <input 
+            type="text" 
+            class="form-control form-control-lg text-center fw-bold" 
+            id="otp" 
+            placeholder="123456"
+            maxlength="6"
+            formControlName="otp">
+        </div>
+
+        <!-- Submit Button -->
+        <div class="d-grid gap-2 mt-4">
+          <button 
+            type="submit" 
+            class="btn btn-lg btn-primary shadow-sm" 
+            [disabled]="!canSubmit()">
+            <i class="bi" [ngClass]="isOtpSent ? 'bi-check-circle-fill' : 'bi-send-fill'"></i>
+            {{ isOtpSent ? 'Verify OTP' : 'Send OTP' }}
+          </button>
+        </div>
+
+        <!-- Message Alert -->
+        <div *ngIf="message" 
+             class="alert mt-4 mb-0 text-center rounded-pill py-2 px-3 shadow-sm"
+             [ngClass]="{'alert-success': isSuccess, 'alert-danger': !isSuccess}">
+          <i class="bi" [ngClass]="isSuccess ? 'bi-check-circle-fill me-2' : 'bi-exclamation-triangle-fill me-2'"></i>
+          {{ message }}
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>

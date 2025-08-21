@@ -1,0 +1,28 @@
+<div class="container mt-5">
+  <div class="card mx-auto shadow-sm" style="max-width: 400px;">
+    <div class="card-header text-center">
+      <h2>Admin Login</h2>
+    </div>
+    <div class="card-body">
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+          <label for="username" class="form-label">Username</label>
+          <input type="text" class="form-control" id="username" formControlName="username">
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input type="password" class="form-control" id="password" formControlName="password">
+        </div>
+        <div *ngIf="errorMessage" class="alert alert-danger">
+          {{ errorMessage }}
+        </div>
+        <div class="d-grid gap-2 mt-4">
+          <button type="submit" class="btn btn-primary" [disabled]="!loginForm.valid">Login</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<div>
+    <router-outlet></router-outlet>
+</div>

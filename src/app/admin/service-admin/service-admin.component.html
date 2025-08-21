@@ -1,0 +1,76 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card shadow-sm mb-4">
+        <div class="card-header">
+          {{ isEditMode ? 'Edit Service' : 'Add New Service' }}
+        </div>
+        <div class="card-body">
+          <form [formGroup]="serviceForm" (ngSubmit)="onSave()">
+            <div class="mb-3">
+              <label class="form-label">Name</label>
+              <input type="text" formControlName="name" class="form-control">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Type</label>
+              <input type="text" formControlName="type" class="form-control">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Category</label>
+              <input type="text" formControlName="category" class="form-control">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Description</label>
+              <textarea formControlName="description" class="form-control"></textarea>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Price</label>
+              <input type="number" formControlName="price" class="form-control">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Advance Amount</label>
+              <input type="number" formControlName="advanceAmount" class="form-control">
+            </div>
+            <div class="d-grid">
+              <button type="submit" class="btn btn-primary" [disabled]="!serviceForm.valid">
+                {{ isEditMode ? 'Update' : 'Add Service' }}
+              </button>
+              <button type="button" class="btn btn-secondary mt-2" (click)="onClearForm()">Clear</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-md-8">
+      <div class="card shadow-sm">
+        <div class="card-header">
+          All Services
+        </div>
+        <div class="card-body">
+          <table class="table table-striped table-hover">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let service of services">
+                <td>{{ service.name }}</td>
+                <td>{{ service.category }}</td>
+                <td>₹{{ service.price }}</td>
+                <td>
+                  <button class="btn btn-sm btn-warning me-2" (click)="onEdit(service)">Edit</button>
+                  <button class="btn btn-sm btn-danger" (click)="onDelete(service.id)">Delete</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,36 @@
+<div class="container mt-4">
+  <h2>All Leads</h2>
+  <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+  <table class="table table-striped table-hover mt-3">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Verified</th>
+        <th>Cart Items</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let lead of leads">
+        <td>{{ lead.id }}</td>
+        <td>{{ lead.name }}</td>
+        <td>{{ lead.email }}</td>
+        <td>{{ lead.phoneNumber }}</td>
+        <td>{{ lead.emailVerified ? 'Yes' : 'No' }}</td>
+        <td>
+          <ul class="list-unstyled">
+            <li *ngFor="let item of lead.cartItems">
+              {{ item.serviceName }} (₹{{ item.price }})
+            </li>
+          </ul>
+        </td>
+        <td>
+          <button class="btn btn-sm btn-info">View</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

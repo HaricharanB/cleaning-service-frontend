@@ -1,0 +1,31 @@
+<div class="container my-5">
+  <h1 class="text-center mb-4 text-uppercase fw-bold py-2" 
+      style="color: #dc3545; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #a2f5e2; border-radius: 6px;">
+    Categories
+  </h1>
+
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4 text-center">
+    <div class="col" *ngFor="let category of categories">
+      <div 
+        class="card h-100 shadow-lg border-0 category-card"
+        [style.background-image]="'url(' + category.image + ')'"
+        [style.background-size]="'cover'"
+        [style.background-position]="'center'"
+        (click)="selectCategory(category.name)"
+        style="cursor: pointer; transition: transform 0.3s ease;">
+        
+        <div class="card-body d-flex align-items-center justify-content-center" style="background: rgba(0, 0, 0, 0.4);">
+          <h5 class="card-title text-white fw-bold p-2 rounded" style="background: rgba(0, 0, 0, 0.7);">
+            {{ category.name }}
+          </h5>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .category-card:hover {
+    transform: scale(1.05);
+  }
+</style>

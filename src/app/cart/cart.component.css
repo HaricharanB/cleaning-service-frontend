@@ -1,0 +1,26 @@
+mat-card {
+  max-width: 600px;
+  margin: auto;
+}
+
+mat-list-item {
+  height: auto;
+  padding: 16px 0;
+}
+
+mat-icon {
+  color: #1a73e8; /* A nice blue */
+}
+
+.cart-total {
+  font-weight: 500;
+  text-align: right;
+  padding: 16px;
+  margin: 0;
+}
+
+mat-card-actions {
+  display: flex;
+  justify-content: flex-end;
+  padding: 16px;
+}

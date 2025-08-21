@@ -1,0 +1,15 @@
+.category-card {
+  min-height: 200px;
+  background-size: cover;
+  background-position: center;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.category-card:hover {
+  transform: scale(1.05);
+}
+
+.category-card .card-body {
+  background-color: rgba(0, 0, 0, 0.4); /* Dark overlay for text readability */
+}

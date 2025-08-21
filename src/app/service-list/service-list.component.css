@@ -1,0 +1,27 @@
+.services-grid {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+
+.service-card {
+  transition: transform 0.2s ease-in-out;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+mat-card-header {
+  margin-bottom: 16px;
+}
+
+mat-card-content p {
+  color: #555;
+}
+
+mat-card-actions {
+  display: flex;
+  justify-content: flex-end;
+}
