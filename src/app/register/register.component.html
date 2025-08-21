@@ -1,8 +1,8 @@
 <div class="container mt-5">
   <div class="card mx-auto shadow-lg border-0" style="max-width: 500px; border-radius: 12px;">
     <div class="card-header text-center bg-primary text-white py-4" style="border-top-left-radius: 12px; border-top-right-radius: 12px;">
-      <h2 class="mb-1">Register Yourself to view all our services</h2>
-      <p class="text-white-50 mb-0">Fill in your details to get started with our services</p>
+      <h2 class="mb-1">Register Yourself</h2>
+      <p class="text-muted">Fill in your details to get started with our services. An owner will contact you shortly.</p>
     </div>
     <div class="card-body p-4">
       <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
@@ -21,7 +21,12 @@
           <label for="phone" class="form-label fw-semibold">Phone Number</label>
           <input type="tel" class="form-control" id="phone" formControlName="phoneNumber" placeholder="Enter your phone number">
         </div>
-        
+         <div class="form-check mb-3">
+          <input class="form-check-input" type="checkbox" id="terms" formControlName="termsAccepted">
+          <label class="form-check-label" for="terms">
+            I accept the <a routerLink="/terms">terms and conditions</a>
+          </label>
+        </div>
         <div class="d-grid mt-4">
           <button type="submit" class="btn btn-primary btn-lg shadow-sm" [disabled]="!registerForm.valid">
             Register
