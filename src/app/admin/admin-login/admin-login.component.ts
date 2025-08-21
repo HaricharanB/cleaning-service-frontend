@@ -20,8 +20,8 @@ export class AdminLoginComponent {
     private router: Router
   ) {
     this.loginForm = this.fb.group({
-      username: ['owner', Validators.required],
-      password: ['password', Validators.required]
+      username: ['', Validators.required],
+      password: ['', Validators.required]
     });
   }
 
