@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ServiceService, CleaningService } from '../services/service.service';
 import { CartService } from '../services/cart.service';
-
+import { AuthService } from '../auth.service';
 @Component({
   selector: 'app-service-list',
   templateUrl: './service-list.component.html',
@@ -17,14 +17,16 @@ export class ServiceListComponent implements OnInit {
     private serviceService: ServiceService,
     private cartService: CartService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+      private authService: AuthService,
   ) { }
 
   ngOnInit(): void {
     // Check local storage for authentication status
-    const jwt = localStorage.getItem('jwt_token');
-    this.isVerified = !!jwt;
-
+ this.authService.isAuthenticated$.subscribe(isAuthenticated => {
+      this.isVerified = isAuthenticated;  
+      console.log('Is Verified:', this.isVerified);
+    });
     // Subscribe to query parameter changes to react to category selection
     this.route.queryParams.subscribe(params => {
       this.currentCategory = params['category'] || null;

@@ -9,8 +9,7 @@
         <th>Email</th>
         <th>Phone</th>
         <th>Verified</th>
-        <th>Cart Items</th>
-        <th>Actions</th>
+       
       </tr>
     </thead>
     <tbody>
@@ -20,16 +19,7 @@
         <td>{{ lead.email }}</td>
         <td>{{ lead.phoneNumber }}</td>
         <td>{{ lead.emailVerified ? 'Yes' : 'No' }}</td>
-        <td>
-          <ul class="list-unstyled">
-            <li *ngFor="let item of lead.cartItems">
-              {{ item.serviceName }} (₹{{ item.price }})
-            </li>
-          </ul>
-        </td>
-        <td>
-          <button class="btn btn-sm btn-info">View</button>
-        </td>
+       
       </tr>
     </tbody>
   </table>

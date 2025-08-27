@@ -2,6 +2,7 @@
   <h1 class="text-center mb-4" 
       style="color: darkred; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: aquamarine;">
       Cleaning Services
+    
   </h1>
 
   <div *ngIf="services.length > 0; else noServices">
@@ -27,28 +28,32 @@
               </ul>
             </div>
             
-            <div class="mt-auto">
+            <div class="mt-auto" *ngIf="isVerified">
               <h4 class="text-primary mt-3">
                 ₹{{ service.price | number:'1.2-2' }}
               </h4>
-              <p class="text-secondary mb-0">
+              <p class="text-secondary mb-0" *ngIf="isVerified">
                 Advance: ₹{{ service.advanceAmount | number:'1.2-2' }}
               </p>
               <hr>
-              
-              <div class="d-grid gap-2">
-                <button *ngIf="!isVerified" 
-                        class="btn btn-primary" 
-                        routerLink="/register">
-                  Request a Booking
-                </button>
-                <button *ngIf="isVerified" 
-                        class="btn btn-success" 
-                        (click)="addToCart(service)">
+            </div>
+            <div class="d-grid gap-2">
+              <ng-container *ngIf="isVerified; else requestButton">
+                <button class="btn btn-success" (click)="addToCart(service)">
                   Add to Cart
                 </button>
-              </div>
+              </ng-container>
             </div>
+
+            <ng-template #requestButton>
+              <div class="d-grid gap-2">
+                <button class="btn btn-primary" routerLink="/register">
+                  
+                  Regiter Or Login to View Our Pricing Details
+                </button>
+              </div>
+            </ng-template>
+            
           </div>
         </div>
       </div>
@@ -61,3 +66,5 @@
     </div>
   </ng-template>
 </div>
+
+<router-outlet></router-outlet>   

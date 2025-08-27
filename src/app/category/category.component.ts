@@ -13,7 +13,8 @@ export class CategoryComponent implements OnInit {
     { name: 'Full House', image: 'assets/full-house.jpg' },
     { name: 'Commercial', image: 'assets/commercial.jpeg' },
     { name: 'Bathroom', image: 'assets/bathroom.png' },
-    { name: 'Sofa', image: 'assets/sofa.png' }
+    { name: 'Sofa', image: 'assets/sofa.png' },
+    {name:'Mattress', image:'assets/mattress.jpeg'}
   ];
 
   constructor(private router: Router) { }
