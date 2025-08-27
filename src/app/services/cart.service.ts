@@ -23,5 +23,11 @@ export class CartService {
   getCartTotal(): number {
     return this.cartItems.reduce((total, service) => total + service.price, 0);
   }
-  
+  removeFromCart(service: CleaningService): void {
+    const index = this.cartItems.findIndex(item => item.id === service.id);
+    if (index > -1) {
+      this.cartItems.splice(index, 1);
+      this.cartSubject.next(this.cartItems);
+    }
+  }
 }

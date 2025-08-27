@@ -63,4 +63,8 @@ export class ServiceListComponent implements OnInit {
     this.cartService.addToCart(service);
     alert(`${service.name} added to your cart!`);
   }
+  removeFromCart(service: any): void {
+    this.cartService.removeFromCart(service);
+    alert(`${service.name} removed from your cart!`);
+  }
 }

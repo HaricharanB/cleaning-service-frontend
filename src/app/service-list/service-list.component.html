@@ -40,7 +40,10 @@
             <div class="d-grid gap-2">
               <ng-container *ngIf="isVerified; else requestButton">
                 <button class="btn btn-success" (click)="addToCart(service)">
-                  Add to Cart
+                  Add to Cart (+)
+                </button>
+                  <button class="btn btn-success" (click)="removeFromCart(service)">
+                  Remove From Cart (-)
                 </button>
               </ng-container>
             </div>
