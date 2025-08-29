@@ -8,7 +8,20 @@ export interface CleaningService {
   description: string;
   price: number;
   advanceAmount: number;
-  category: string;
+  categoryId: number;
+}
+export interface CleaningServiceView {
+  id: number;
+  name: string;
+  type: string;
+  description: string;
+  price: number;
+  advanceAmount: number;
+  category: {
+    id: number;
+    name: string; 
+    maxOrdersPerDay: number;
+  };
 }
 @Injectable({
   providedIn: 'root'
@@ -16,8 +29,8 @@ export interface CleaningService {
 
 export class AdminService {
   // Method to get all services
-  getAllServices(): Observable<CleaningService[]> {
-    return this.http.get<CleaningService[]>(`${this.apiUrl}/services`);
+  getAllServices(): Observable<CleaningServiceView[]> {
+    return this.http.get<CleaningServiceView[]>(`${this.apiUrl}/services`);
   }
 
   // Method to add a new service

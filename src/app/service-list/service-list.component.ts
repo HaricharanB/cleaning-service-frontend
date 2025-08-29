@@ -12,6 +12,7 @@ export class ServiceListComponent implements OnInit {
   services: any[] = [];
   isVerified = false;
   currentCategory: string | null = null;
+  cureentCategoryId: number | null = null;
 
   constructor(
     private serviceService: ServiceService,
@@ -30,14 +31,34 @@ export class ServiceListComponent implements OnInit {
     // Subscribe to query parameter changes to react to category selection
     this.route.queryParams.subscribe(params => {
       this.currentCategory = params['category'] || null;
+      if(this.currentCategory){
+        if(this.currentCategory=='Full House'){
+          this.cureentCategoryId=4;
+        }else if(this.currentCategory=='Commercial'){
+          this.cureentCategoryId=3;
+        }else if(this.currentCategory=='Bathroom'){
+          this.cureentCategoryId=2;
+        }else if(this.currentCategory=='Sofa'){
+          this.cureentCategoryId=5;
+        }else if(this.currentCategory=='Mattress'){
+          this.cureentCategoryId=1;
+        }
+      }else{
+        this.cureentCategoryId=null;
+      }
+      console.log('Selected Category:', this.currentCategory);
+      console.log('Selected Category ID:', this.cureentCategoryId);
+      
       this.loadServices();
     });
   }
   
   loadServices(): void {
-    if (this.currentCategory) {
-      this.serviceService.getServicesByCategory(this.currentCategory).subscribe(data => {
+    if (this.currentCategory && this.cureentCategoryId !== null) {
+      this.serviceService.getServicesByCategory(this.cureentCategoryId).subscribe(data => {
+     
         this.services = this.processDescriptions(data);
+        console.log(this.services)
       });
     } else {
       this.serviceService.getServices().subscribe(data => {

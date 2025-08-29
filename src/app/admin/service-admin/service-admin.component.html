@@ -17,7 +17,7 @@
             </div>
             <div class="mb-3">
               <label class="form-label">Category</label>
-              <input type="text" formControlName="category" class="form-control">
+              <input type="text" formControlName="categoryId" class="form-control">
             </div>
             <div class="mb-3">
               <label class="form-label">Description</label>
@@ -60,7 +60,7 @@
             <tbody>
               <tr *ngFor="let service of services">
                 <td>{{ service.name }}</td>
-                <td>{{ service.category }}</td>
+                <td>{{ service.category.name }}</td>
                 <td>₹{{ service.price }}</td>
                 <td>
                   <button class="btn btn-sm btn-warning me-2" (click)="onEdit(service)">Edit</button>

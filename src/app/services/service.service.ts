@@ -10,13 +10,14 @@ export interface CleaningService {
   description: string;
   price: number;
   advanceAmount: number;
+  
 }
 
 @Injectable({
   providedIn: 'root'
 })
 export class ServiceService {
-   getServicesByCategory(category: string): Observable<CleaningService[]> {
+   getServicesByCategory(category: number): Observable<CleaningService[]> {
     return this.http.get<CleaningService[]>(`${this.apiUrl}?category=${category}`);
   }
   private apiUrl = 'http://localhost:8080/api/services';

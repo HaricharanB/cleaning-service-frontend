@@ -1,24 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AdminService, CleaningService } from 'src/app/admin.service';
-
+import { CleaningServiceView } from 'src/app/admin.service';
 @Component({
   selector: 'app-service-admin',
   templateUrl: './service-admin.component.html',
   styleUrls: ['./service-admin.component.css']
 })
 export class ServiceAdminComponent implements OnInit {
-  services: CleaningService[] = [];
+  services: CleaningServiceView[] = [];
   serviceForm: FormGroup;
   isEditMode = false;
-  selectedService: CleaningService | null = null;
+  selectedService: CleaningServiceView | null = null;
   
   constructor(private fb: FormBuilder, private adminService: AdminService) {
     this.serviceForm = this.fb.group({
       id: [null],
       name: ['', Validators.required],
       type: ['', Validators.required],
-      category: ['', Validators.required],
+      categoryId: [0, Validators.required], 
       description: ['', Validators.required],
       price: ['', Validators.required],
       advanceAmount: ['', Validators.required],
@@ -35,10 +35,18 @@ export class ServiceAdminComponent implements OnInit {
     });
   }
 
-  onEdit(service: CleaningService): void {
+  onEdit(service: CleaningServiceView): void {
     this.isEditMode = true;
     this.selectedService = service;
-    this.serviceForm.patchValue(service);
+    this.serviceForm.patchValue({
+      id: service.id,
+      name: service.name,
+      type: service.type,
+      categoryId: service.category.id,
+      description: service.description,
+      price: service.price,
+      advanceAmount: service.advanceAmount,
+    });
   }
 
   onDelete(serviceId: number): void {
