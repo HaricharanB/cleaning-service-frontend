@@ -8,7 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { VerificationComponent } from './verification/verification.component';
 import { CartComponent } from './cart/cart.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CalendarModule } from 'primeng/calendar';
+
 
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
@@ -76,7 +76,7 @@ import { OrdinalDatePipe } from './ordinal-date.pipe';
     MatDialogModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    CalendarModule
+ 
   
     
   ],
