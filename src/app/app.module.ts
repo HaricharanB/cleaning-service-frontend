@@ -8,6 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { VerificationComponent } from './verification/verification.component';
 import { CartComponent } from './cart/cart.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CalendarModule } from 'primeng/calendar';
 
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
@@ -30,6 +31,10 @@ import { AuthInterceptor } from './services/auth.interceptor';
 import { ServiceAdminComponent } from './admin/service-admin/service-admin.component';
 import { AdminNavComponent } from './admin/admin-nav/admin-nav.component';
 import { AdminLeadComponent } from './admin-lead/admin-lead.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { OrdinalDatePipe } from './ordinal-date.pipe';
+
 
 
 @NgModule({
@@ -50,7 +55,9 @@ import { AdminLeadComponent } from './admin-lead/admin-lead.component';
     AdminDashboardComponent,
     ServiceAdminComponent,
     AdminNavComponent,
-   AdminLeadComponent
+   AdminLeadComponent,
+   OrdinalDatePipe
+ 
     
   ],
   imports: [
@@ -66,7 +73,12 @@ import { AdminLeadComponent } from './admin-lead/admin-lead.component';
     MatIconModule,
     MatFormFieldModule,
     MatInputModule,
-    MatDialogModule
+    MatDialogModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    CalendarModule
+  
+    
   ],
   providers: [  { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
   bootstrap: [AppComponent]

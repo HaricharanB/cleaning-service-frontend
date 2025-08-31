@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
+import { CartService } from '../services/cart.service';
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',
@@ -12,7 +13,8 @@ export class NavComponent implements OnInit {
 
   constructor(
     private router: Router,
- private authService: AuthService
+ private authService: AuthService,
+ private cartService: CartService
   ) { }
 
   ngOnInit(): void {
@@ -29,8 +31,11 @@ export class NavComponent implements OnInit {
  
 }
   logout(): void {
+    this.cartService.clearCart(); // Clear cart on logout
     this.authService.logout();
+    
     this.router.navigate(['/']);
+  
   }
   }
 

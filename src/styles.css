@@ -69,3 +69,18 @@ h3, h4 {
 .modal-buttons button {
   margin: 0 8px;
 }
+::ng-deep .mat-datepicker-content,
+::ng-deep .mat-calendar {
+  background: #222 !important;
+  color: #fff !important;
+  z-index: 2000 !important;
+}
+
+::ng-deep .mat-calendar-body-cell-content {
+  color: #fff !important;
+}
+
+/* Optional: Make sure overlay is above everything */
+::ng-deep .cdk-overlay-pane {
+  z-index: 3000 !important;
+}

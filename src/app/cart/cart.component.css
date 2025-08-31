@@ -24,3 +24,14 @@ mat-card-actions {
   justify-content: flex-end;
   padding: 16px;
 }
+::ng-deep .mat-datepicker-content,
+::ng-deep .mat-calendar {
+  background: #222 !important;
+  color: #fff !important;
+}
+::ng-deep .mat-calendar-body-cell-content {
+  color: #fff !important;
+}
+.invalid-date {
+  border: 1.5px solid red;
+}

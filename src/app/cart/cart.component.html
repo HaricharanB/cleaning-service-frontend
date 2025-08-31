@@ -1,27 +1,109 @@
 <div class="container mt-5">
-  <h1 class="text-center mb-4" style="color: darkred; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ; background-color: aquamarine;" >My Cart</h1>
+  <h1
+    class="text-center mb-4"
+    style="color: darkred; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: aquamarine"
+  >
+    My Cart
+  </h1>
+
   <div *ngIf="leadId; else noLead">
     <div class="card shadow-sm mx-auto" style="max-width: 600px;">
       <div class="card-body">
         <div *ngIf="cartItems.length > 0; else emptyCart">
           <ul class="list-group list-group-flush">
-            <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let item of cartItems">
-              <div>
-                <h5 class="my-0">{{ item.name }} ({{ item.type }})</h5>
-                <!-- <small class="text-muted">{{ item.description }}</small> -->
+            <li class="list-group-item" *ngFor="let item of cartItems">
+              <div class="d-flex justify-content-between align-items-center" >
+                <div>
+                  <h5>Service ID {{item.id}}</h5>
+                  <h5>{{ item.name }} ({{ item.type }})</h5>
+                </div>
+                <span class="text-primary fw-bold">₹{{ item.price | number: '1.2-2' }}</span>
               </div>
-              <span class="text-primary fw-bold">₹{{ item.price | number:'1.2-2' }}</span>
+<!-- <mat-form-field appearance="outline" class="w-100">
+  <mat-label>Select Date</mat-label>
+  <input
+    matInput
+    [matDatepicker]="picker"
+    [matDatepickerFilter]="dateFilterForCategory(item.category.id)"
+    [min]="minDate"
+    [ngModel]="selectedDates.get(item.id) || null"
+    (dateChange)="onDateSelected(item.id, $event)"
+  />
+  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>
+
+<div *ngIf="dateErrors.get(item.id)" class="text-danger mt-1">
+  {{ dateErrors.get(item.id) }}
+</div> -->
+
+
+       <label for="date-{{item.id}}" style="margin-top: 10px; display: block;">
+      Pick Booking Date:
+    </label>
+<input
+  id="date-{{item.id}}"
+  type="date"
+  [min]="minDate"
+  [value]="selectedDates.get(item.id) || ''"
+  (change)="onDateSelected(item.id, $event)"
+
+/>
+
+    <!-- Simple error message -->
+    <!-- <div
+      *ngIf="isDateBooked(item.category.id, selectedDates.get(item.id))"
+      style="color: red; font-size: 0.9em; margin-top: 4px;"
+    >
+      Selected date is already fully booked. Please choose another date.
+    </div> -->
+   <div *ngIf="isselected" class="container my-4">
+  <h3 class="mb-4 text-primary">Booked Dates Overview</h3>
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped align-middle shadow">
+      <thead class="table-dark">
+        <tr>
+          <th scope="col">Service ID</th>
+          <th scope="col">Category Name</th>
+          <th scope="col">Dates Not Available</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of cartItems">
+          <td>{{ item.id }}</td>
+          <td>{{ item.category.name }}</td>
+          <td>
+            <ng-container *ngIf="item.bookedDates?.length; else noDates">
+              
+              <span *ngFor="let date of item.bookedDates" class="badge bg-danger me-1">{{ date | ordinalDate }}  {{date}}</span>
+            </ng-container>
+            <ng-template #noDates>
+              <span class="text-muted">None</span>
+            </ng-template>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
             </li>
           </ul>
+
           <div class="d-flex justify-content-between align-items-center mt-3">
             <h4 class="my-0">Total</h4>
-            <h3 class="text-success fw-bold">₹{{ cartTotal | number:'1.2-2' }}</h3> 
+            <h3 class="text-success fw-bold">₹{{ cartTotal | number: '1.2-2' }}</h3>
           </div>
-          <hr>
+
+          <hr />
+           <div class="d-grid">
+            <button class="btn btn-danger" (click)="checkavailable()">Checck Available</button>
+          </div>
           <div class="d-grid">
             <button class="btn btn-success" (click)="onFinalizeBooking()">Proceed to Payment</button>
           </div>
+          
         </div>
+
         <ng-template #emptyCart>
           <div class="alert alert-info text-center my-3">
             Your cart is empty. Please go back and add a service.

@@ -10,7 +10,13 @@ export interface CleaningService {
   description: string;
   price: number;
   advanceAmount: number;
-  
+  category:{
+    id: number;
+    name: string; 
+    maxOrdersPerDay: number;
+  }
+   bookedDates?: string[];
+
 }
 
 @Injectable({

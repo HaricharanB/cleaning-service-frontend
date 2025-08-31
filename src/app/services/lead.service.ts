@@ -2,11 +2,11 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-export interface CleaningServices{
-  serviceName: string;
-  price : number;
-  advanceAmount : number;
-}
+// export interface CleaningServices{
+//     service: {
+//         id: number;
+//     };
+// }
 @Injectable({
   providedIn: 'root'
 })
@@ -23,11 +23,11 @@ export class LeadService {
   }
   
  
-  updateCartDetails(leadId: number, cartItems: CleaningServices[]): Observable<any> {
+  updateCartDetails(leadId: number, payload:any[] ): Observable<any> {
         const url = `${this.apiUrl}/${leadId}/cart`;
         
         // The backend now expects a list of objects, so we send the array directly
-        return this.http.put(url, cartItems);
+        return this.http.put(url, payload);
     }
     // in lead.service.ts
  requestOtp(email: string): Observable<any> {

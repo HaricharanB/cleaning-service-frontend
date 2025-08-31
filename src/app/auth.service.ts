@@ -52,6 +52,7 @@ export class AuthService {
 
   logout(): void {
     localStorage.removeItem('jwt_token');
+    localStorage.removeItem('leadId');
     this.isAuthenticatedSubject.next(false);
   }
 
