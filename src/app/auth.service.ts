@@ -27,8 +27,8 @@ export class AuthService {
     login(credentials: any): Observable<string> {
     return this.http.post(`${this.authUrl}/login`, credentials, { responseType: 'text' }).pipe(
       tap((response: string) => {
-        localStorage.setItem('jwt_token', response);
-        this.isAuthenticatedSubject.next(true);
+ 
+        // this.isAuthenticatedSubject.next(true);
       })
     );
   }

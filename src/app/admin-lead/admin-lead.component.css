@@ -1,0 +1,20 @@
+.card {
+  border: none;
+}
+
+.card-header {
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.table-responsive {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+}
+
+thead th {
+  font-weight: 500;
+  text-transform: uppercase;
+}

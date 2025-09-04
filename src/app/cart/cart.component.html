@@ -75,7 +75,7 @@
           <td>
             <ng-container *ngIf="item.bookedDates?.length; else noDates">
               
-              <span *ngFor="let date of item.bookedDates" class="badge bg-danger me-1">{{ date | ordinalDate }}  {{date}}</span>
+              <span *ngFor="let date of item.bookedDates" class="badge bg-danger me-1">{{ date | ordinalDate }}  </span>
             </ng-container>
             <ng-template #noDates>
               <span class="text-muted">None</span>
@@ -96,10 +96,10 @@
 
           <hr />
            <div class="d-grid">
-            <button class="btn btn-danger" (click)="checkavailable()">Checck Available</button>
+            <button class="btn btn-danger" (click)="checkavailable()">Check Available</button>
           </div>
           <div class="d-grid">
-            <button class="btn btn-success" (click)="onFinalizeBooking()">Proceed to Payment</button>
+            <button class="btn btn-success" [disabled] = "!isselected" (click)="onFinalizeBooking()">Proceed to Payment</button>
           </div>
           
         </div>

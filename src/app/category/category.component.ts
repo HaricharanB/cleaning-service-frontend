@@ -14,7 +14,8 @@ export class CategoryComponent implements OnInit {
     { name: 'Commercial', image: 'assets/commercial.jpeg' },
     { name: 'Bathroom', image: 'assets/bathroom.png' },
     { name: 'Sofa', image: 'assets/sofa.png' },
-    {name:'Mattress', image:'assets/mattress.jpeg'}
+    {name:'Mattress', image:'assets/mattress.jpeg'},
+    {name:'Kitchen', image:'assets/Kitchen.webp'}
   ];
 
   constructor(private router: Router) { }

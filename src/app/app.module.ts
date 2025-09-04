@@ -34,6 +34,8 @@ import { AdminLeadComponent } from './admin-lead/admin-lead.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { OrdinalDatePipe } from './ordinal-date.pipe';
+import { AdminCategoryComponent } from './admin/admin-category/admin-category.component';
+import { AdminSettingsComponent } from './admin/admin-settings/admin-settings.component';
 
 
 
@@ -56,8 +58,10 @@ import { OrdinalDatePipe } from './ordinal-date.pipe';
     ServiceAdminComponent,
     AdminNavComponent,
    AdminLeadComponent,
-   OrdinalDatePipe
- 
+   OrdinalDatePipe,
+   AdminCategoryComponent,
+   AdminSettingsComponent
+
     
   ],
   imports: [
@@ -76,6 +80,7 @@ import { OrdinalDatePipe } from './ordinal-date.pipe';
     MatDialogModule,
     MatDatepickerModule,
     MatNativeDateModule,
+
  
   
     

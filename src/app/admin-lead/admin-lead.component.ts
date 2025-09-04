@@ -8,8 +8,9 @@ import { AdminService } from '../admin.service';
 })
 export class AdminLeadComponent implements OnInit {
   leads: any[] = [];
+  isbookingView = false;
   errorMessage = '';
-
+   selectedLeadBookings: any[] = [];
   constructor(private adminService: AdminService) { }
 
   ngOnInit(): void {
@@ -21,5 +22,15 @@ export class AdminLeadComponent implements OnInit {
         this.errorMessage = 'Failed to load leads.';
       }
     );
+  }
+ viewBookings(lead: any): void {
+    this.selectedLeadBookings = lead.cartItems;
+   
+    this.isbookingView = true;
+  }
+
+  closeBookings(): void {
+    this.isbookingView = false;
+    this.selectedLeadBookings = [];
   }
 }

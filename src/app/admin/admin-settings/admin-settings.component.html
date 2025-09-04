@@ -1,0 +1,83 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card shadow-sm mb-4">
+        <div class="card-header bg-primary text-white">
+          <h4 class="my-1">Update Username</h4>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="updateUsernameForm" (ngSubmit)="updateUsername()">
+              <div class="mb-3">
+              <label class="form-label">Current Username</label>
+              <input type="text" formControlName="username" class="form-control">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">New Username</label>
+              <input type="text" formControlName="newUsername" class="form-control">
+            </div>
+            
+            <div *ngIf="otpSentForUsername" class="mb-3">
+              <label class="form-label">Enter OTP</label>
+              <input type="text" formControlName="otp" class="form-control">
+            </div>
+            
+            <div *ngIf="errorMessageUsername" class="alert alert-danger">
+              {{ errorMessageUsername }}
+            </div>
+            
+            <div class="d-grid gap-2 mt-4">
+              <button type="button" class="btn btn-info" (click)="requestOtpForUsername()" *ngIf="!otpSentForUsername">
+                Request OTP
+              </button>
+              <button type="submit" class="btn btn-primary" [disabled]="!updateUsernameForm.valid" *ngIf="otpSentForUsername">
+                Update Username
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-md-6">
+      <div class="card shadow-sm mb-4">
+        <div class="card-header bg-success text-white">
+          <h4 class="my-1">Update Password</h4>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="updatePasswordForm" (ngSubmit)="updatePassword()">
+            <div class="mb-3">
+              <label class="form-label">Current Username</label>
+              <input type="text" formControlName="username" class="form-control">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Old Password</label>
+              <input type="password" formControlName="oldPassword" class="form-control">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">New Password</label>
+              <input type="password" formControlName="newPassword" class="form-control">
+            </div>
+            
+            <div *ngIf="otpSentForPassword" class="mb-3">
+              <label class="form-label">Enter OTP</label>
+              <input type="text" formControlName="otp" class="form-control">
+            </div>
+            
+            <div *ngIf="errorMessagePassword" class="alert alert-danger">
+              {{ errorMessagePassword }}
+            </div>
+            
+            <div class="d-grid gap-2 mt-4">
+              <button type="button" class="btn btn-info" (click)="requestOtpForPassword()" *ngIf="!otpSentForPassword">
+                Request OTP
+              </button>
+              <button type="submit" class="btn btn-primary" [disabled]="!updatePasswordForm.valid" *ngIf="otpSentForPassword">
+                Update Password
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

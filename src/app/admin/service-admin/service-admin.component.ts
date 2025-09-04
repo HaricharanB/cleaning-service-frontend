@@ -27,8 +27,14 @@ export class ServiceAdminComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadServices();
+    this.loadcategories();
   }
-
+  categories: any[] = [];
+  loadcategories(): void {
+    this.adminService.getAllCategories().subscribe(data => {
+      this.categories = data;
+    });
+  }
   loadServices(): void {
     this.adminService.getAllServices().subscribe(data => {
       this.services = data;

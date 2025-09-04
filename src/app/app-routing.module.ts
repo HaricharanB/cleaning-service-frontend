@@ -13,6 +13,8 @@ import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard
 import { AdminLoginComponent } from './admin/admin-login/admin-login.component';
 import { ServiceAdminComponent } from './admin/service-admin/service-admin.component';
 import { AdminLeadComponent } from './admin-lead/admin-lead.component';
+import { AdminCategoryComponent } from './admin/admin-category/admin-category.component';
+import { AdminSettingsComponent } from './admin/admin-settings/admin-settings.component';
 // const routes: Routes = [
 //   { path: '', component: CategoryComponent }, // New root path
 //   { path: 'services', component: ServiceListComponent },
@@ -52,6 +54,9 @@ const routes: Routes = [
     children: [
       { path: 'services', component: ServiceAdminComponent },
       { path: 'leads', component: AdminLeadComponent },
+      // { path: 'categories', component:AdminCategoryComponent  },
+           { path: 'categories', component: AdminCategoryComponent },
+           {path:'settings',component: AdminSettingsComponent} ,
       { path: '', redirectTo: 'services', pathMatch: 'full' }
     ]
   },

@@ -1,0 +1,58 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card shadow-sm mb-4">
+        <div class="card-header">
+          {{ isEditMode ? 'Edit Category' : 'Add New Category' }}
+        </div>
+        <div class="card-body">
+          <form [formGroup]="categoryForm" (ngSubmit)="onSave()">
+            <div class="mb-3">
+              <label class="form-label">Category Name</label>
+              <input type="text" formControlName="name" class="form-control">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Max Orders Per Day</label>
+              <input type="number" formControlName="maxOrdersPerDay" class="form-control">
+            </div>
+            <div class="d-grid">
+              <button type="submit" class="btn btn-primary" [disabled]="!categoryForm.valid">
+                {{ isEditMode ? 'Update' : 'Add Category' }}
+              </button>
+              <button type="button" class="btn btn-secondary mt-2" (click)="onClearForm()">Clear</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-md-8">
+      <div class="card shadow-sm">
+        <div class="card-header">
+          All Categories
+        </div>
+        <div class="card-body">
+          <table class="table table-striped table-hover">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Max Orders</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let category of categories">
+                <td>{{ category.name }}</td>
+                <td>{{ category.maxOrdersPerDay }}</td>
+                <td>
+                  <button class="btn btn-sm btn-warning me-2" (click)="onEdit(category)">Edit</button>
+                  <button class="btn btn-sm btn-danger" (click)="onDelete(category.id)">Delete</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

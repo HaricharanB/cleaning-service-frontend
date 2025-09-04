@@ -9,20 +9,31 @@
           <label for="username" class="form-label">Username</label>
           <input type="text" class="form-control" id="username" formControlName="username">
         </div>
-        <div class="mb-3">
-          <label for="password" class="form-label">Password</label>
-          <input type="password" class="form-control" id="password" formControlName="password">
+        
+        <div *ngIf="loginStep === 'credentials'">
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password" formControlName="password">
+          </div>
         </div>
+
+        <div *ngIf="loginStep === 'otp'">
+          <div class="alert alert-success">OTP has been sent to your admin email.</div>
+          <div class="mb-3">
+            <label for="otp" class="form-label">Enter OTP</label>
+            <input type="text" class="form-control" id="otp" formControlName="otp">
+          </div>
+        </div>
+        
         <div *ngIf="errorMessage" class="alert alert-danger">
           {{ errorMessage }}
         </div>
         <div class="d-grid gap-2 mt-4">
-          <button type="submit" class="btn btn-primary" [disabled]="!loginForm.valid">Login</button>
+          <button type="submit" class="btn btn-primary" [disabled]="!loginForm.valid">
+            {{ loginStep === 'credentials' ? 'Login' : 'Verify & Login' }}
+          </button>
         </div>
       </form>
     </div>
   </div>
-</div>
-<div>
-    <router-outlet></router-outlet>
 </div>

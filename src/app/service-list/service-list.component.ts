@@ -35,13 +35,16 @@ export class ServiceListComponent implements OnInit {
         if(this.currentCategory=='Full House'){
           this.cureentCategoryId=4;
         }else if(this.currentCategory=='Commercial'){
-          this.cureentCategoryId=3;
+          this.cureentCategoryId=6;
         }else if(this.currentCategory=='Bathroom'){
           this.cureentCategoryId=2;
         }else if(this.currentCategory=='Sofa'){
           this.cureentCategoryId=5;
         }else if(this.currentCategory=='Mattress'){
           this.cureentCategoryId=1;
+        }
+        else if(this.currentCategory=='Kitchen'){
+          this.cureentCategoryId=3;
         }
       }else{
         this.cureentCategoryId=null;
